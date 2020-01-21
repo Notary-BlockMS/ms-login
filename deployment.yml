@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cartorio-blockms-dep-login
+  labels:
+    #Project ID
+    app: cartorio-blockms
+spec:
+  #Run two instances of our application
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cartorio-blockms-login
+    spec:
+      #Container details
+      containers:
+        - name: cartorio-blockms-login
+          image: gcr.io/cartorio-blockms/cartorio-blockms-login:0.0.1
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"  
+
+          #Ports to expose
+          ports:
+          - containerPort: 3333

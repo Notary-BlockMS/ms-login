@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  #Service name
+  name: cartorio-blockms-svc-login
+spec:
+  selector:
+    app: cartorio-blockms
+  ports:
+    - protocol: TCP
+      port: 3333
+      targetPort: 3333
+  type: LoadBalancer
